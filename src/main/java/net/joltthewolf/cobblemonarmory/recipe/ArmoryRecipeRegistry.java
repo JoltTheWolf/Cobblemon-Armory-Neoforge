@@ -6,17 +6,21 @@
 
 package net.joltthewolf.cobblemonarmory.recipe;
 
-import net.minecraft.core.Registry;
+import net.joltthewolf.cobblemonarmory.CobblemonArmory;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
+public final class ArmoryRecipeRegistry {
 
-public class ArmoryRecipeRegistry {
+    private ArmoryRecipeRegistry() {}
 
-    public static void init() {
-        Registry.register(
-                BuiltInRegistries.RECIPE_SERIALIZER,
-                ArmorySmithingSerializer.ID,
-                ArmorySmithingSerializer.INSTANCE
-        );
-    }
+    public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS =
+            DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, CobblemonArmory.MOD_ID);
+
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> ARMORY_SMITHING =
+            RECIPE_SERIALIZERS.register("armory_smithing", () -> ArmorySmithingSerializer.INSTANCE);
+
+    public static void init() {}
 }

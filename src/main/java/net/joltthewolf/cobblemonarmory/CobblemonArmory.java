@@ -1,5 +1,6 @@
 package net.joltthewolf.cobblemonarmory;
 
+import net.joltthewolf.cobblemonarmory.recipe.ArmoryRecipeRegistry;
 import net.joltthewolf.cobblemonarmory.registry.ArmorRegistry;
 import net.joltthewolf.cobblemonarmory.registry.ComponentRegistry;
 import net.joltthewolf.cobblemonarmory.registry.ItemGroupRegistry;
@@ -22,7 +23,7 @@ public class CobblemonArmory {
         ArmorRegistry.ARMOR_MATERIALS.register(modBus);
         ItemRegistry.ITEMS.register(modBus);
         ItemGroupRegistry.CREATIVE_MODE_TABS.register(modBus);
-
+        ArmoryRecipeRegistry.RECIPE_SERIALIZERS.register(modBus);
         ComponentRegistry.init();
         ArmorRegistry.init();
         ItemRegistry.init();

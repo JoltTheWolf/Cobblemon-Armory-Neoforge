@@ -16,8 +16,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class ComponentRegistry {
     private ComponentRegistry() {}
 
-    private static DeferredRegister.DataComponents
-            DATA_COMPONENTS = DeferredRegister.createDataComponents(CobblemonArmory.MOD_ID);
+    public static final DeferredRegister.DataComponents DATA_COMPONENTS =
+            DeferredRegister.createDataComponents(CobblemonArmory.MOD_ID);
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<ResourceLocation>>
             ARMOR_SET_ID = DATA_COMPONENTS.registerComponentType("armor_set_id", builder -> builder
