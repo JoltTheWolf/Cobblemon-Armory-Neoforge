@@ -1,0 +1,19 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"idle": {
+			"loop": true,
+			"bones": {
+				"smoke1": {
+					"rotation": [0, 0, "0+Math.cos((query.anim_time) * 90 * 4) * 6"]
+				},
+				"smoke2": {
+					"rotation": [0, 0, "7.5+Math.cos((query.anim_time) * 90 * 4 - 100) * 12"]
+				},
+				"smoke3": {
+					"rotation": [0, 0, "-10+Math.cos((query.anim_time) * 90 * 4 - 220) * 22"]
+				}
+			}
+		}
+	}
+}

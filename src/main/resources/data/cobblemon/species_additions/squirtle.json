@@ -1,0 +1,14 @@
+{
+ "target": "cobblemon:squirtle",
+
+ "drops": {
+   "amount": 1,
+   "entries": [
+     {
+       "item": "cobblemonarmory:squirtle_glasses",
+       "percentage": 30.0,
+       "quantityRange": "1"
+     }
+   ]
+ }
+}

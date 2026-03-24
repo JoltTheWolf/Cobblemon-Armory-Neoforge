@@ -1,0 +1,12 @@
+{
+  "target": "cobblemon:bastiodon",
+  "drops": {
+    "amount": 1,
+    "entries": [
+      {
+        "item": "cobblemonarmory:bastiodon_skull",
+        "quantityRange": "1-1"
+      }
+    ]
+  }
+}

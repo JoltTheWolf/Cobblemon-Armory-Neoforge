@@ -1,0 +1,107 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "builtin/entity",
+  "texture_size": [
+    64,
+    64
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "translation": [
+        -0.5,
+        -1.5,
+        1.25
+      ],
+      "scale": [
+        0.75,
+        1,
+        0.75
+      ]
+    },
+    "thirdperson_lefthand": {
+      "translation": [
+        -0.5,
+        -1.5,
+        1.25
+      ],
+      "scale": [
+        0.75,
+        1,
+        0.75
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -5,
+        0,
+        0
+      ],
+      "translation": [
+        0.75,
+        -0.5,
+        0
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -5,
+        0,
+        0
+      ],
+      "translation": [
+        0.75,
+        -0.5,
+        0
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    },
+    "gui": {
+      "rotation": [
+        -90,
+        -45,
+        -90
+      ],
+      "translation": [
+        -5.5,
+        -5.5,
+        0.25
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        -90,
+        45,
+        90
+      ],
+      "translation": [
+        6,
+        -6,
+        0.25
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ]
+    }
+  },
+  "textures": {
+    "particle": "cobblemonarmory:item/ceruledge_sword"
+  }
+}

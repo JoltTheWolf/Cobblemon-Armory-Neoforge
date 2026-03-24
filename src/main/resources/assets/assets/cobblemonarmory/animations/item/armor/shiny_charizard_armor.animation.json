@@ -1,0 +1,11 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.charizard_armor.idle": {
+			"loop": true
+		},
+		"idle": {
+			"loop": true
+		}
+	}
+}
