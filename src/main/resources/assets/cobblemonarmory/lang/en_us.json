@@ -1,0 +1,13 @@
+{
+  "itemGroup.cobblemonarmory": "Example Mod Tab",
+  "block.cobblemonarmory.example_block": "Example Block",
+  "item.cobblemonarmory.example_item": "Example Item",
+
+  "cobblemonarmory.configuration.title": "Cobblemon: Armory Configs",
+  "cobblemonarmory.configuration.section.cobblemonarmory.common.toml": "Cobblemon: Armory Configs",
+  "cobblemonarmory.configuration.section.cobblemonarmory.common.toml.title": "Cobblemon: Armory Configs",
+  "cobblemonarmory.configuration.items": "Item List",
+  "cobblemonarmory.configuration.logDirtBlock": "Log Dirt Block",
+  "cobblemonarmory.configuration.magicNumberIntroduction": "Magic Number Text",
+  "cobblemonarmory.configuration.magicNumber": "Magic Number"
+}
