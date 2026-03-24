@@ -9,7 +9,6 @@ package net.joltthewolf.cobblemonarmory.recipe;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -25,10 +24,6 @@ public class ArmorySmithingSerializer implements RecipeSerializer<ArmorySmithing
             ResourceLocation.fromNamespaceAndPath("cobblemonarmory", "armory_smithing");
 
     public static final ArmorySmithingSerializer INSTANCE = new ArmorySmithingSerializer();
-
-    public static void register() {
-        Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, ID, INSTANCE);
-    }
 
     public record TemplateSpec(Item item) {
         public static final MapCodec<TemplateSpec> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
@@ -100,6 +95,13 @@ public class ArmorySmithingSerializer implements RecipeSerializer<ArmorySmithing
                     ArmorySmithingRecipe::new
             );
 
-    @Override public MapCodec<ArmorySmithingRecipe> codec() { return CODEC; }
-    @Override public StreamCodec<RegistryFriendlyByteBuf, ArmorySmithingRecipe> streamCodec() { return STREAM_CODEC; }
+    @Override
+    public MapCodec<ArmorySmithingRecipe> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public StreamCodec<RegistryFriendlyByteBuf, ArmorySmithingRecipe> streamCodec() {
+        return STREAM_CODEC;
+    }
 }

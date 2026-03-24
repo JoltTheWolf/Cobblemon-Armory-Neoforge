@@ -58,17 +58,14 @@ public class ArmorySmithingRecipe implements SmithingRecipe {
 
         // Addition = dp_item + material_id check
         if (a.getItem() != addition.item()) return false;
-        ResourceLocation mat = a.get(ComponentRegistry.MATERIAL_ID);
+        ResourceLocation mat = a.get(ComponentRegistry.MATERIAL_ID.get());
         return mat != null && mat.equals(addition.materialId());
-
     }
-
-
 
     @Override
     public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider registries) {
         ItemStack out = new ItemStack(result.item());
-        out.set(ComponentRegistry.ARMOR_SET_ID, result.armorSetId());
+        out.set(ComponentRegistry.ARMOR_SET_ID.get(), result.armorSetId());
         out.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(result.customModelData()));
         return out;
     }
@@ -76,7 +73,7 @@ public class ArmorySmithingRecipe implements SmithingRecipe {
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registries) {
         ItemStack preview = new ItemStack(result.item());
-        preview.set(ComponentRegistry.ARMOR_SET_ID, result.armorSetId());
+        preview.set(ComponentRegistry.ARMOR_SET_ID.get(), result.armorSetId());
         preview.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(result.customModelData()));
         return preview;
     }
