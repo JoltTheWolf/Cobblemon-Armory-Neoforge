@@ -37,7 +37,7 @@ public class MetagrossHammerItem extends SwordItem implements GeoItem {
 
     private static final ItemAttributeModifiers DEFAULTS = ItemAttributeModifiers.builder()
             .add(Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(ATTACK_DAMAGE_ID, 6.0, AttributeModifier.Operation.ADD_VALUE),
+                    new AttributeModifier(ATTACK_DAMAGE_ID, 7.0, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.MAINHAND)
             .add(Attributes.ATTACK_SPEED,
                     new AttributeModifier(ATTACK_SPEED_ID, -2.4, AttributeModifier.Operation.ADD_VALUE),
