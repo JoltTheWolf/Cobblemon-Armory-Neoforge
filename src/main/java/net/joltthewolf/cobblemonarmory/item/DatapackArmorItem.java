@@ -111,24 +111,15 @@ public class DatapackArmorItem extends ArmorItem implements GeoItem {
             @Override
             public HumanoidModel<?> getHumanoidArmorModel(
                     LivingEntity livingEntity,
-                    ItemStack stack,
-                    EquipmentSlot slot,
+                    ItemStack itemStack,
+                    EquipmentSlot equipmentSlot,
                     HumanoidModel<?> original
             ) {
                 if (renderer == null) {
                     renderer = new DatapackArmorRenderer();
                 }
 
-                renderer.prepForRender(livingEntity, stack, slot, original);
-                return renderer;
-            }
-
-            @Override
-            public @Nullable BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                if (renderer == null) {
-                    renderer = new DatapackArmorRenderer();
-                }
-
+                renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
                 return renderer;
             }
         });

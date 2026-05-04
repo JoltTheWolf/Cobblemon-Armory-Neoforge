@@ -25,8 +25,8 @@ public final class ItemRegistry {
         return ITEMS.register(name, supplier);
     }
 
-    public static DeferredHolder<Item, Item> register(String name, Item item) {
-        return ITEMS.register(name, () -> item);
+    public static DeferredHolder<Item, Item> register(String name, Supplier<? extends Item> supplier) {
+        return ITEMS.register(name, supplier);
     }
     //SMITHING TEMPLATE
     public static final DeferredHolder<Item, Item> COBBLEMON_SMITHING_UPGRADE =
@@ -43,36 +43,37 @@ public final class ItemRegistry {
                     List.of(ResourceLocation.withDefaultNamespace("item/empty_slot_ingot"))));
 
     // ITEMS
-    public static final DeferredHolder<Item, Item> CHARIZARD_SCALES = register("charizard_scales", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> PRIMEAPE_FUR = register("primeape_fur", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> EEVEE_FUR = register("eevee_fur", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> HAXORUS_SHARD = register("haxorus_shard", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> STARMIE_PIECES = register("starmie_pieces", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> RAYQUAZA_SCALE = register("rayquaza_scale", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> TINKATON_HAMMER_PIECE = register("tinkaton_hammer_piece", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> TINKATON_HANDLE_PIECE = register("tinkaton_handle_piece", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> BASTIODON_SKULL = register("bastiodon_skull", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> BLASTOISE_SHELL = register("blastoise_shell", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> BLAZIKEN_FEATHERS = register("blaziken_feathers", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> CINDERACE_FUR = register("cinderace_fur", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> DECIDUEYE_FEATHERS = register("decidueye_feathers", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> DELPHOX_FUR = register("delphox_fur", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> EMBOAR_SKIN = register("emboar_skin", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> EMPOLEON_HORNS = register("empoleon_horns", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> FERALIGATR_SCALE = register("feraligatr_scale", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> INCINEROAR_FUR = register("incineroar_fur", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> INFERNAPE_PLATING = register("infernape_plating", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> GRENINJA_SKIN = register("greninja_skin", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> INTELEON_SHED = register("inteleon_shed", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> MEGANIUM_PETALS = register("meganium_petals", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> SAMUROTT_PLATING = register("samurott_plating", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> SCEPTILE_LEAVES = register("sceptile_leaves", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> SERPERIOR_TAIL = register("serperior_tail", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> SWAMPERT_SKIN = register("swampert_skin", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> TORTERRA_SHELL = register("torterra_shell", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> TYPHLOSION_FUR = register("typhlosion_fur", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> VENUSAUR_FLOWER = register("venusaur_flower", new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredHolder<Item, Item> METAGROSS_PLATE = register("metagross_plate", new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> CHARIZARD_SCALES = register("charizard_scales", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> PRIMEAPE_FUR = register("primeape_fur", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> EEVEE_FUR = register("eevee_fur", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> HAXORUS_SHARD = register("haxorus_shard", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> STARMIE_PIECES = register("starmie_pieces", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> RAYQUAZA_SCALE = register("rayquaza_scale", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> TINKATON_HAMMER_PIECE = register("tinkaton_hammer_piece", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> TINKATON_HANDLE_PIECE = register("tinkaton_handle_piece", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> BASTIODON_SKULL = register("bastiodon_skull", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> BLASTOISE_SHELL = register("blastoise_shell", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> BLAZIKEN_FEATHERS = register("blaziken_feathers", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> CINDERACE_FUR = register("cinderace_fur", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> DECIDUEYE_FEATHERS = register("decidueye_feathers", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> DELPHOX_FUR = register("delphox_fur", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> EMBOAR_SKIN = register("emboar_skin", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> EMPOLEON_HORNS = register("empoleon_horns", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> FERALIGATR_SCALE = register("feraligatr_scale", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> INCINEROAR_FUR = register("incineroar_fur", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> INFERNAPE_PLATING = register("infernape_plating", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> GRENINJA_SKIN = register("greninja_skin", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> INTELEON_SHED = register("inteleon_shed", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> MEGANIUM_PETALS = register("meganium_petals", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> SAMUROTT_PLATING = register("samurott_plating", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> SCEPTILE_LEAVES = register("sceptile_leaves", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> SERPERIOR_TAIL = register("serperior_tail", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> SWAMPERT_SKIN = register("swampert_skin", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> TORTERRA_SHELL = register("torterra_shell", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> TYPHLOSION_FUR = register("typhlosion_fur", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> VENUSAUR_FLOWER = register("venusaur_flower", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> METAGROSS_PLATE = register("metagross_plate", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredHolder<Item, Item> CORVIKNIGHT_FEATHERS = register("corviknight_feathers", () -> new Item(new Item.Properties().stacksTo(64)));
 
     //WEAPONS
     public static final DeferredHolder<Item, TinkatonHammerItem> TINKATON_HAMMER = registerItem("tinkaton_hammer", () -> new TinkatonHammerItem(new Item.Properties().stacksTo(1)));
@@ -82,6 +83,7 @@ public final class ItemRegistry {
     public static final DeferredHolder<Item, BastiodonShieldItem> BASTIODON_SHIELD = registerItem("bastiodon_shield", () -> new BastiodonShieldItem(new Item.Properties().stacksTo(1)));
     public static final DeferredHolder<Item, CeruledgeSwordItem> CERULEDGE_SWORD = registerItem("ceruledge_sword", () -> new CeruledgeSwordItem(new Item.Properties().stacksTo(1)));
     public static final DeferredHolder<Item, ZacianSwordItem> ZACIAN_SWORD = registerItem("zacian_sword", () -> new ZacianSwordItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, MetagrossHammerItem> METAGROSS_HAMMER = registerItem("metagross_hammer", () -> new MetagrossHammerItem(new Item.Properties().stacksTo(1)));
 
     //TRAINER HATS
     public static final DeferredHolder<Item, RedsHatArmorItem> REDS_HAT = registerItem("reds_hat", () -> new RedsHatArmorItem(REDS_HAT_ARMOR_MATERIAL, ArmorItem.Type.HELMET, ArmorRegistry.commonHatProps(ArmorItem.Type.HELMET)));
@@ -117,6 +119,36 @@ public final class ItemRegistry {
     public static final DeferredHolder<Item, ShinyCharizardArmorItem> SHINY_CHARIZARD_CHESTPLATE = registerItem("shiny_charizard_armor_chestplate", () -> new ShinyCharizardArmorItem(SHINY_CHARIZARD_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, ArmorRegistry.commonProps(ArmorItem.Type.CHESTPLATE)));
     public static final DeferredHolder<Item, ShinyCharizardArmorItem> SHINY_CHARIZARD_LEGGINGS = registerItem("shiny_charizard_armor_leggings", () -> new ShinyCharizardArmorItem(SHINY_CHARIZARD_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, ArmorRegistry.commonProps(ArmorItem.Type.LEGGINGS)));
     public static final DeferredHolder<Item, ShinyCharizardArmorItem> SHINY_CHARIZARD_BOOTS = registerItem("shiny_charizard_armor_boots", () -> new ShinyCharizardArmorItem(SHINY_CHARIZARD_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, ArmorRegistry.commonProps(ArmorItem.Type.BOOTS)));
+
+    public static final DeferredHolder<Item, TorterraArmorItem> TORTERRA_HELMET = registerItem("torterra_armor_helmet", () -> new TorterraArmorItem(TORTERRA_ARMOR_MATERIAL, ArmorItem.Type.HELMET, ArmorRegistry.commonProps(ArmorItem.Type.HELMET)));
+    public static final DeferredHolder<Item, TorterraArmorItem> TORTERRA_CHESTPLATE = registerItem("torterra_armor_chestplate", () -> new TorterraArmorItem(TORTERRA_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, ArmorRegistry.commonProps(ArmorItem.Type.CHESTPLATE)));
+    public static final DeferredHolder<Item, TorterraArmorItem> TORTERRA_LEGGINGS = registerItem("torterra_armor_leggings", () -> new TorterraArmorItem(TORTERRA_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, ArmorRegistry.commonProps(ArmorItem.Type.LEGGINGS)));
+    public static final DeferredHolder<Item, TorterraArmorItem> TORTERRA_BOOTS = registerItem("torterra_armor_boots", () -> new TorterraArmorItem(TORTERRA_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, ArmorRegistry.commonProps(ArmorItem.Type.BOOTS)));
+
+    public static final DeferredHolder<Item, ShinyTorterraArmorItem> SHINY_TORTERRA_HELMET = registerItem("shiny_torterra_armor_helmet", () -> new ShinyTorterraArmorItem(SHINY_TORTERRA_ARMOR_MATERIAL, ArmorItem.Type.HELMET, ArmorRegistry.commonProps(ArmorItem.Type.HELMET)));
+    public static final DeferredHolder<Item, ShinyTorterraArmorItem> SHINY_TORTERRA_CHESTPLATE = registerItem("shiny_torterra_armor_chestplate", () -> new ShinyTorterraArmorItem(SHINY_TORTERRA_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, ArmorRegistry.commonProps(ArmorItem.Type.CHESTPLATE)));
+    public static final DeferredHolder<Item, ShinyTorterraArmorItem> SHINY_TORTERRA_LEGGINGS = registerItem("shiny_torterra_armor_leggings", () -> new ShinyTorterraArmorItem(SHINY_TORTERRA_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, ArmorRegistry.commonProps(ArmorItem.Type.LEGGINGS)));
+    public static final DeferredHolder<Item, ShinyTorterraArmorItem> SHINY_TORTERRA_BOOTS = registerItem("shiny_torterra_armor_boots", () -> new ShinyTorterraArmorItem(SHINY_TORTERRA_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, ArmorRegistry.commonProps(ArmorItem.Type.BOOTS)));
+
+    public static final DeferredHolder<Item, BlazikenArmorItem> BLAZIKEN_HELMET = registerItem("blaziken_armor_helmet", () -> new BlazikenArmorItem(BLAZIKEN_ARMOR_MATERIAL, ArmorItem.Type.HELMET, ArmorRegistry.commonProps(ArmorItem.Type.HELMET)));
+    public static final DeferredHolder<Item, BlazikenArmorItem> BLAZIKEN_CHESTPLATE = registerItem("blaziken_armor_chestplate", () -> new BlazikenArmorItem(BLAZIKEN_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, ArmorRegistry.commonProps(ArmorItem.Type.CHESTPLATE)));
+    public static final DeferredHolder<Item, BlazikenArmorItem> BLAZIKEN_LEGGINGS = registerItem("blaziken_armor_leggings", () -> new BlazikenArmorItem(BLAZIKEN_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, ArmorRegistry.commonProps(ArmorItem.Type.LEGGINGS)));
+    public static final DeferredHolder<Item, BlazikenArmorItem> BLAZIKEN_BOOTS = registerItem("blaziken_armor_boots", () -> new BlazikenArmorItem(BLAZIKEN_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, ArmorRegistry.commonProps(ArmorItem.Type.BOOTS)));
+
+    public static final DeferredHolder<Item, ShinyBlazikenArmorItem> SHINY_BLAZIKEN_HELMET = registerItem("shiny_blaziken_armor_helmet", () -> new ShinyBlazikenArmorItem(SHINY_BLAZIKEN_ARMOR_MATERIAL, ArmorItem.Type.HELMET, ArmorRegistry.commonProps(ArmorItem.Type.HELMET)));
+    public static final DeferredHolder<Item, ShinyBlazikenArmorItem> SHINY_BLAZIKEN_CHESTPLATE = registerItem("shiny_blaziken_armor_chestplate", () -> new ShinyBlazikenArmorItem(SHINY_BLAZIKEN_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, ArmorRegistry.commonProps(ArmorItem.Type.CHESTPLATE)));
+    public static final DeferredHolder<Item, ShinyBlazikenArmorItem> SHINY_BLAZIKEN_LEGGINGS = registerItem("shiny_blaziken_armor_leggings", () -> new ShinyBlazikenArmorItem(SHINY_BLAZIKEN_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, ArmorRegistry.commonProps(ArmorItem.Type.LEGGINGS)));
+    public static final DeferredHolder<Item, ShinyBlazikenArmorItem> SHINY_BLAZIKEN_BOOTS = registerItem("shiny_blaziken_armor_boots", () -> new ShinyBlazikenArmorItem(SHINY_BLAZIKEN_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, ArmorRegistry.commonProps(ArmorItem.Type.BOOTS)));
+
+    public static final DeferredHolder<Item, CorviknightArmorItem> CORVIKNIGHT_HELMET = registerItem("corviknight_armor_helmet", () -> new CorviknightArmorItem(CORVIKNIGHT_ARMOR_MATERIAL, ArmorItem.Type.HELMET, ArmorRegistry.commonProps(ArmorItem.Type.HELMET)));
+    public static final DeferredHolder<Item, CorviknightArmorItem> CORVIKNIGHT_CHESTPLATE = registerItem("corviknight_armor_chestplate", () -> new CorviknightArmorItem(CORVIKNIGHT_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, ArmorRegistry.commonProps(ArmorItem.Type.CHESTPLATE)));
+    public static final DeferredHolder<Item, CorviknightArmorItem> CORVIKNIGHT_LEGGINGS = registerItem("corviknight_armor_leggings", () -> new CorviknightArmorItem(CORVIKNIGHT_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, ArmorRegistry.commonProps(ArmorItem.Type.LEGGINGS)));
+    public static final DeferredHolder<Item, CorviknightArmorItem> CORVIKNIGHT_BOOTS = registerItem("corviknight_armor_boots", () -> new CorviknightArmorItem(CORVIKNIGHT_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, ArmorRegistry.commonProps(ArmorItem.Type.BOOTS)));
+
+    public static final DeferredHolder<Item, ShinyCorviknightArmorItem> SHINY_CORVIKNIGHT_HELMET = registerItem("shiny_corviknight_armor_helmet", () -> new ShinyCorviknightArmorItem(SHINY_CORVIKNIGHT_ARMOR_MATERIAL, ArmorItem.Type.HELMET, ArmorRegistry.commonProps(ArmorItem.Type.HELMET)));
+    public static final DeferredHolder<Item, ShinyCorviknightArmorItem> SHINY_CORVIKNIGHT_CHESTPLATE = registerItem("shiny_corviknight_armor_chestplate", () -> new ShinyCorviknightArmorItem(SHINY_CORVIKNIGHT_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, ArmorRegistry.commonProps(ArmorItem.Type.CHESTPLATE)));
+    public static final DeferredHolder<Item, ShinyCorviknightArmorItem> SHINY_CORVIKNIGHT_LEGGINGS = registerItem("shiny_corviknight_armor_leggings", () -> new ShinyCorviknightArmorItem(SHINY_CORVIKNIGHT_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, ArmorRegistry.commonProps(ArmorItem.Type.LEGGINGS)));
+    public static final DeferredHolder<Item, ShinyCorviknightArmorItem> SHINY_CORVIKNIGHT_BOOTS = registerItem("shiny_corviknight_armor_boots", () -> new ShinyCorviknightArmorItem(SHINY_CORVIKNIGHT_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, ArmorRegistry.commonProps(ArmorItem.Type.BOOTS)));
 
     public static final DeferredHolder<Item, ArmarougeArmorItem> ARMAROUGE_HELMET = registerItem("armarouge_armor_helmet", () -> new ArmarougeArmorItem(ARMAROUGE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, ArmorRegistry.commonProps(ArmorItem.Type.HELMET)));
     public static final DeferredHolder<Item, ArmarougeArmorItem> ARMAROUGE_CHESTPLATE = registerItem("armarouge_armor_chestplate", () -> new ArmarougeArmorItem(ARMAROUGE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, ArmorRegistry.commonProps(ArmorItem.Type.CHESTPLATE)));

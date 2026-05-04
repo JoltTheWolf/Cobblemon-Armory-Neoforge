@@ -16,6 +16,7 @@ import net.joltthewolf.cobblemonarmory.registry.RightClickEntityRegistry;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.slf4j.Logger;
 
@@ -33,8 +34,7 @@ public class CobblemonArmory {
         ItemGroupRegistry.CREATIVE_MODE_TABS.register(modBus);
         ArmoryRecipeRegistry.RECIPE_SERIALIZERS.register(modBus);
 
-        modBus.addListener(ArmoryDropsReload::register);
-
+        NeoForge.EVENT_BUS.addListener(this::registerReloadListeners);
         NeoForge.EVENT_BUS.addListener(ArmoryDropHooks::onAfterDeath);
         NeoForge.EVENT_BUS.addListener(RightClickEntityRegistry::onEntityInteract);
         NeoForge.EVENT_BUS.addListener(CobblemonArmory::registerCommands);
@@ -48,6 +48,10 @@ public class CobblemonArmory {
         ArmoryDropHooks.register();
         RightClickEntityRegistry.init();
         LootInjectorRegistry.init();
+    }
+
+    private void registerReloadListeners(AddReloadListenerEvent event) {
+        ArmoryDropsReload.register(event);
     }
 
     private static void registerCommands(RegisterCommandsEvent event) {

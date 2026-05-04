@@ -51,6 +51,7 @@ public final class ItemGroupRegistry {
                         output.accept(ItemRegistry.TYPHLOSION_FUR.get());
                         output.accept(ItemRegistry.VENUSAUR_FLOWER.get());
                         output.accept(ItemRegistry.METAGROSS_PLATE.get());
+                        output.accept(ItemRegistry.CORVIKNIGHT_FEATHERS.get());
 
                         //Weapons
                         output.accept(ItemRegistry.TINKATON_HAMMER.get());
@@ -60,6 +61,7 @@ public final class ItemGroupRegistry {
                         output.accept(ItemRegistry.BASTIODON_SHIELD.get());
                         output.accept(ItemRegistry.CERULEDGE_SWORD.get());
                         output.accept(ItemRegistry.ZACIAN_SWORD.get());
+                        output.accept(ItemRegistry.METAGROSS_HAMMER.get());
 
                         //Trainer Hats
                         output.accept(ItemRegistry.REDS_HAT.get());
@@ -94,6 +96,36 @@ public final class ItemGroupRegistry {
                         output.accept(ItemRegistry.SHINY_CHARIZARD_BOOTS.get());
 
                         output.accept(ItemRegistry.SQUIRTLE_GLASSES.get());
+
+                        output.accept(ItemRegistry.BLAZIKEN_HELMET.get());
+                        output.accept(ItemRegistry.BLAZIKEN_CHESTPLATE.get());
+                        output.accept(ItemRegistry.BLAZIKEN_LEGGINGS.get());
+                        output.accept(ItemRegistry.BLAZIKEN_BOOTS.get());
+
+                        output.accept(ItemRegistry.SHINY_BLAZIKEN_HELMET.get());
+                        output.accept(ItemRegistry.SHINY_BLAZIKEN_CHESTPLATE.get());
+                        output.accept(ItemRegistry.SHINY_BLAZIKEN_LEGGINGS.get());
+                        output.accept(ItemRegistry.SHINY_BLAZIKEN_BOOTS.get());
+
+                        output.accept(ItemRegistry.CORVIKNIGHT_HELMET.get());
+                        output.accept(ItemRegistry.CORVIKNIGHT_CHESTPLATE.get());
+                        output.accept(ItemRegistry.CORVIKNIGHT_LEGGINGS.get());
+                        output.accept(ItemRegistry.CORVIKNIGHT_BOOTS.get());
+
+                        output.accept(ItemRegistry.SHINY_CORVIKNIGHT_HELMET.get());
+                        output.accept(ItemRegistry.SHINY_CORVIKNIGHT_CHESTPLATE.get());
+                        output.accept(ItemRegistry.SHINY_CORVIKNIGHT_LEGGINGS.get());
+                        output.accept(ItemRegistry.SHINY_CORVIKNIGHT_BOOTS.get());
+
+                        output.accept(ItemRegistry.TORTERRA_HELMET.get());
+                        output.accept(ItemRegistry.TORTERRA_CHESTPLATE.get());
+                        output.accept(ItemRegistry.TORTERRA_LEGGINGS.get());
+                        output.accept(ItemRegistry.TORTERRA_BOOTS.get());
+
+                        output.accept(ItemRegistry.SHINY_TORTERRA_HELMET.get());
+                        output.accept(ItemRegistry.SHINY_TORTERRA_CHESTPLATE.get());
+                        output.accept(ItemRegistry.SHINY_TORTERRA_LEGGINGS.get());
+                        output.accept(ItemRegistry.SHINY_TORTERRA_BOOTS.get());
 
                         output.accept(ItemRegistry.ARMAROUGE_HELMET.get());
                         output.accept(ItemRegistry.ARMAROUGE_CHESTPLATE.get());
