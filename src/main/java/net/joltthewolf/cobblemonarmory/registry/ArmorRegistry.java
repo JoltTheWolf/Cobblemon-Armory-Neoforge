@@ -70,6 +70,9 @@ public final class ArmorRegistry {
     public static final DeferredHolder<ArmorMaterial, ArmorMaterial> SQUIRTLE_GLASSES_ARMOR_MATERIAL = reg("squirtle_glasses");
     public static final DeferredHolder<ArmorMaterial, ArmorMaterial> SLOWKING_CROWN_ARMOR_MATERIAL = reg("slowking_crown");
     public static final DeferredHolder<ArmorMaterial, ArmorMaterial> GRENINJA_SCARF_ARMOR_MATERIAL = reg("greninja_scarf");
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> MIMIKYU_ARMOR_MATERIAL = reg("mimikyu");
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> SHINY_MIMIKYU_ARMOR_MATERIAL = reg("shiny_mimikyu");
+
 
     // Trainer Hats
     public static final DeferredHolder<ArmorMaterial, ArmorMaterial> REDS_HAT_ARMOR_MATERIAL = regLeather("reds_hat");

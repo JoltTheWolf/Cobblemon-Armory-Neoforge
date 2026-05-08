@@ -52,6 +52,7 @@ public final class ItemGroupRegistry {
                         output.accept(ItemRegistry.VENUSAUR_FLOWER.get());
                         output.accept(ItemRegistry.METAGROSS_PLATE.get());
                         output.accept(ItemRegistry.CORVIKNIGHT_FEATHERS.get());
+                        output.accept(ItemRegistry.MIMIKYU_FABRIC.get());
 
                         //Weapons
                         output.accept(ItemRegistry.TINKATON_HAMMER.get());
@@ -146,6 +147,12 @@ public final class ItemGroupRegistry {
                         output.accept(ItemRegistry.SHINY_HAXORUS_CHESTPLATE.get());
                         output.accept(ItemRegistry.SHINY_HAXORUS_LEGGINGS.get());
                         output.accept(ItemRegistry.SHINY_HAXORUS_BOOTS.get());
+
+                        output.accept(ItemRegistry.MIMIKYU_HELMET.get());
+                        output.accept(ItemRegistry.MIMIKYU_CHESTPLATE.get());
+
+                        output.accept(ItemRegistry.SHINY_MIMIKYU_HELMET.get());
+                        output.accept(ItemRegistry.SHINY_MIMIKYU_CHESTPLATE.get());
 
                         output.accept(ItemRegistry.EEVEE_HELMET.get());
                         output.accept(ItemRegistry.EEVEE_CHESTPLATE.get());
@@ -256,6 +263,8 @@ public final class ItemGroupRegistry {
                         output.accept(ItemRegistry.SHINY_METAGROSS_CHESTPLATE.get());
                         output.accept(ItemRegistry.SHINY_METAGROSS_LEGGINGS.get());
                         output.accept(ItemRegistry.SHINY_METAGROSS_BOOTS.get());
+
+
 
                         output.accept(ItemRegistry.GALARIAN_WEEZING_HAT.get());
 
